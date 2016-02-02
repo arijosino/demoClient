@@ -31,7 +31,7 @@ angular.module("democlient").config(function($urlRouterProvider,$stateProvider){
               $state.go("home");
             },100);
           }else{
-            if(loginData.username.length){
+            if($scope.loginData.username.length){
               $scope.usernotfound=true;
             }
           }
