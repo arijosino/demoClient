@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; img-src * data:">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="lib/leaflet/leaflet.css" rel="stylesheet">
+    <link href="lib/drmonty-leaflet-awesome-markers/css/leaflet.awesome-markers.css" rel="stylesheet"/>
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/angular-messages/angular-messages.min.js"></script>
+    <script src="lib/angular-md5/angular-md5.min.js"></script>
+    <script src="lib/leaflet/leaflet.js"></script>
+    <script src="lib/angular-simple-logger/dist/angular-simple-logger.js"></script>
+    <script src="lib/ui-leaflet/dist/ui-leaflet.min.js"></script>
+    <script src="lib/drmonty-leaflet-awesome-markers/js/leaflet.awesome-markers.min.js"></script>
+    <script src="lib/Leaflet.encoded/Polyline.encoded.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1Fi2dDNsSDjS8bhkQaERZ6VePfJqIk-M&libraries=geometry"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/services/userservice.js"></script>
+    <script src="js/services/routeservice.js"></script>
+    <script src="js/httpfilter.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/home.js"></script>
+  </head>
+  <body ng-app="democlient">
+    <ion-header-bar type="bar-positive">
+      <h1 class="title">Demo Client</h1>
+    </ion-header-bar>
+      <ion-nav-view></ion-nav-view>
+  </body>
+</html>
