@@ -7,6 +7,12 @@ angular.module('democlient', ['ionic','ngMessages','angular-md5','ui-leaflet'])
 
 .run(function($ionicPlatform,$rootScope) {
   $ionicPlatform.ready(function() {
+
+    $rootScope.deviceinfo = ionic.Platform.device();
+    $rootScope.$broadcast('deviceinfo-gathered');
+    if(!$rootScope.deviceinfo.uuid){
+      $rootScope.deviceinfo.uuid = "";
+    }
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)

@@ -8,9 +8,12 @@ angular.module("democlient").config(function($urlRouterProvider,$stateProvider){
       $ionicHistory.clearHistory();
       $scope.loginData={username:"",password:"",uuid:""};
       $scope.usernotfound=false;
+      this.debugmessage = "";
 
       $scope.doLogin=function(savedUser){
+        this.debugmessage = "iniciando login"
         $scope.loginData.uuid = $rootScope.deviceinfo.uuid;
+        this.debugmessage = "pegou uuid";
         userservice.login({
           username:savedUser?$rootScope.user.username:$scope.loginData.username,
           password:savedUser?$rootScope.user.password:md5.createHash($scope.loginData.password),
@@ -20,6 +23,7 @@ angular.module("democlient").config(function($urlRouterProvider,$stateProvider){
                 "status:\n" + status + '\n'+
                 "config:\n" + JSON.stringify(config) + '\n');
         }).then(function(result){
+          this.debugmessage = "requisição voltou"
           if(result.status==200 && result.data){
             $rootScope.user=result.data;
             console.debug($rootScope.user);
@@ -49,19 +53,17 @@ angular.module("democlient").config(function($urlRouterProvider,$stateProvider){
                   "status:\n" + status + '\n'+
                   "config:\n" + JSON.stringify(config) + '\n');
           }).then(function(result){
-            $scope.doLogin();
+            if(result.data == 1){
+              $scope.doLogin();
+            }
           })
         }
         else{
           alert("Senha e confirmação não estão iguais");
         }
-      }
+      };
 
-      $ionicPlatform.ready(function() {
-        $rootScope.deviceinfo = ionic.Platform.device();
-        if(!$rootScope.deviceinfo.uuid){
-          $rootScope.deviceinfo.uuid = "";
-        }
+      $rootScope.$on('deviceinfo-gathered',function() {
         $rootScope.user = userservice.getLoggedUser();
         if($rootScope.user){
           $scope.doLogin(true);
